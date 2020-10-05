@@ -2,9 +2,9 @@
   "name": "chat-backend",
   "version": "1.0.0",
   "description": "",
-  "main": "server.js",
+  "main": "app.js",
   "scripts": {
-    "serve": "nodemon server.js"
+    "serve": "nodemon app.js"
   },
   "author": "Roman",
   "license": "ISC",

@@ -10,6 +10,9 @@ import { AuthComponent } from './auth.component';
 import { LoginComponent } from './login/login.component';
 import { RegistrationComponent } from './registration/registration.component';
 import { AuthRoutingModule } from './auth-routing.module';
+import { SharedModule } from '../shared/shared.module';
+import { MatDividerModule } from '@angular/material/divider';
+import { UsersService } from '../shared/services/users.service';
 
 @NgModule({
    declarations: [
@@ -19,12 +22,15 @@ import { AuthRoutingModule } from './auth-routing.module';
    ],
    imports: [
       CommonModule,
+      SharedModule,
       AuthRoutingModule,
       MatToolbarModule,
       MatButtonModule,
       MatDialogModule,
       MatInputModule,
-      MatCardModule
-   ]
+      MatCardModule,
+      MatDividerModule
+   ],
+   providers: [UsersService]
 })
 export class AuthModule {}

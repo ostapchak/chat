@@ -1,19 +1,39 @@
 <div class="row">
   <div class="col-md-12">
-    <form class="form">
+    <header style="text-align: center;">
+      <h4 color="primary">Login the chat</h4>
+    </header>
+    <div class="alert alert-{{message.type}}" *ngIf="message.text">
+      <span>{{message.text}}</span>
+    </div>
+    <form class="form" [formGroup]="form" (ngSubmit)="onSubmit()">
       <mat-form-field class="form-element">
         <mat-label>Email</mat-label>
-        <input matInput placeholder="mail@example.com">
-        <mat-hint></mat-hint>
+        <input matInput id="email" type="email" formControlName="email" placeholder="mail@example.com">
+        <mat-error *ngIf="form.get('email').invalid && form.get('email').touched">
+          <mat-error *ngIf="form.get('email')['errors']['required']">Email is <strong>required</strong>!</mat-error>
+          <mat-error *ngIf="form.get('email')['errors']['email']">Please enter a valid email address!</mat-error>
+        </mat-error>
       </mat-form-field>
       <mat-form-field class="form-element">
         <mat-label>Password</mat-label>
-        <input matInput type="password">
-        <mat-hint></mat-hint>
+        <input matInput id="password" type="password" formControlName="password">
+        <mat-error *ngIf="form.get('password').invalid && form.get('password').touched">
+          <mat-error *ngIf="form.get('password')['errors']['required']">Password is <strong>required</strong>!
+          </mat-error>
+          <mat-error
+            *ngIf="form.get('password')['errors']['minlength'] && form.get('password')['errors']['minlength']['requiredLength']">
+            Password must be {{form.get('password')['errors']['minlength']['requiredLength']}} characters long!
+          </mat-error>
+        </mat-error>
       </mat-form-field>
       <div>
-        <button class="form-element" mat-stroked-button color="primary">Login</button>
+        <button class="form-element" type="submit" mat-stroked-button color="primary"
+          [disabled]='form.invalid'>Login</button>
       </div>
     </form>
+    <div class="link">
+      <mat-hint>No account? <a [routerLink]="'/registration'">Registration!</a></mat-hint>
+    </div>
   </div>
 </div>

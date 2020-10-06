@@ -16,6 +16,7 @@
         <mat-error *ngIf="form.get('email').invalid && form.get('email').touched">
           <mat-error *ngIf="form.get('email')['errors']['required']">Email is <strong>required</strong>!</mat-error>
           <mat-error *ngIf="form.get('email')['errors']['email']">Please enter a valid email address!</mat-error>
+          <mat-error *ngIf="form.get('email')['errors']['forbiddenEmail']">Email already exists!</mat-error>
         </mat-error>
       </mat-form-field>
       <mat-form-field class="form-element">

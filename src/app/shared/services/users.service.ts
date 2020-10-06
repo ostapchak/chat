@@ -10,7 +10,7 @@ export class UsersService {
  
     }
      
-    getUser(user: User){
+    getUser(user){
       return this.http.post('/api/user/login',user)
     }
 
